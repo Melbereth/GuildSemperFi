@@ -65,7 +65,6 @@ DOUBLE = {
 
             if(recup[i].value.length != "") {
               console.log(recup[i].value);
-              //rajout pour test
             }
           }
        }
