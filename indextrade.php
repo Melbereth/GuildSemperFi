@@ -1,7 +1,7 @@
 <?php
 
-require ('AutoCompleteTrade.php');
-$auto = New AutoCompleteTrade();
+require ('Trade.php');
+$auto = New Trade();
 // $auto->cherche($_POST['term']);
 
 

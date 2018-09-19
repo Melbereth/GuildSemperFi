@@ -13,7 +13,7 @@ class Trade {
 
               try{
                   $this->bdd = new PDO('mysql:host=localhost;dbname=trade', 'admin', 'admin');
-                  // echo "string";
+              
               }
 
               catch(Exception $e) {
