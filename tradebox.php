@@ -17,14 +17,14 @@
         <button type="button" id="BTNplus" class="BTNplus" name="button">Ajouter un trade</button>
       </div>
       <div id="cache" class="hidden">
-        <form class="" action="indextrade.php" method="post">
+        <form class="" method="post">
 
 
             <div class="proposition">
 
                   <div class="objet" id="exem">
-                    <input type="text" class="search" name="nom1" value="">
-                    <input type="number" name="num1" value="">
+                    <input type="text" class="search recuperer" name="nom1" placeholder="Nom de plante">
+                    <input type="number" class="recuperer" name="num1" placeholder="Nombre">
                     <div class="result"></div>
                   </div>
 
@@ -34,8 +34,8 @@
             <div class="besoin">
 
               <div class="objet" id="exemB">
-                <input type="text" class="search" name="need1" value="">
-                <input type="number" name="numb1" value="">
+                <input type="text" class="search recuperer" name="need1" placeholder="Plante">
+                <input type="number" class="recuperer" name="numb1" placeholder="Nombre">
                 <div class="result"></div>
               </div>
 
@@ -44,7 +44,7 @@
             <button type="button" id="newB2" name="bouton">New input</button><br>
 
 
-            <input type="submit" name="envoyer" value="Proposer le trade">
+            <input type="submit" id="BTNtrade" name="envoyer" value="Proposer le trade">
         </form>
           </div>
 

@@ -8,12 +8,14 @@ DOUBLE = {
     INIT : function() {
       var BTNplus = document.getElementById('BTNplus');
       BTNplus.addEventListener('click', DOUBLE.show);
+      var BTNtrade = document.getElementById('BTNtrade');
+      BTNtrade.addEventListener('click', DOUBLE.infos);
       document.querySelector('#newB').addEventListener('click',DOUBLE.newPut);
       document.querySelector('#newB2').addEventListener('click',DOUBLE.newBes);
     },
 
 
-
+      // Afficher la div caché pour nouvel ajout
      show: function() {
             var montre = document.getElementById('cache');
             if (montre.style.display === 'block') {
@@ -24,6 +26,7 @@ DOUBLE = {
 
        },
 
+        // Génére jusqu'à deux div Proposition en + pour plus d'entrée
       newPut: function() {
           if(DOUBLE.count <= 3) {
             var test = document.querySelector('#exemB');
@@ -38,7 +41,7 @@ DOUBLE = {
           }
         },
 
-
+          // Génére jusqu'à deux div Besoin en + pour plus d'entrée
       newBes: function() {
           if(DOUBLE.count2 <= 3) {
             var test = document.querySelector('#exem');
@@ -52,6 +55,19 @@ DOUBLE = {
             document.getElementById('newB2').disabled = true;
           }
 
+       },
+
+          // Récupération des valeurs saisies dans l'input
+       infos: function() {
+
+         var recup = document.querySelectorAll(".recuperer");
+         for (i=0; i<recup.length; i++) {
+
+            if(recup[i].value.length != "") {
+              console.log(recup[i].value);
+
+            }
+          }
        }
 
 

@@ -13,38 +13,17 @@ class Trade {
 
               try{
                   $this->bdd = new PDO('mysql:host=localhost;dbname=trade', 'admin', 'admin');
-              
+
               }
 
-              catch(Exception $e) {
+              catch(Except.ion $e) {
                   die('Erreur : '.$e->getMessage());
               }
 
 
-    }
+    },
 
-    // Autocomplétion, récupération bdd
-
-      // public function cherche($term) {
-      //
-      //       $this->term = $term;
-      //       // echo "php".$_POST['term'];
-      //       $requete = $this->bdd->prepare("SELECT * FROM Plantes WHERE nom LIKE :term"); // j'effectue ma requête SQL grâce au mot-clé LIKE
-      //       $requete->execute(array('term' => '%'.$this->term.'%'));
-      //
-      //       $reponse = array(); // on créé le tableau
-      //
-      //       while($donnee = $requete->fetch()) // on effectue une boucle pour obtenir les données
-      //       {
-      //           array_push($reponse, $donnee['nom']); // et on ajoute celles-ci à notre tableau
-      //       }
-      //
-      //
-      //       echo json_encode($reponse); // il n'y a plus qu'à convertir en JSON
-      //
-      //   }
-
-
+        // Envoi des valeurs des input à la BDD
       public function envoi($pnom1,$pnum1,$pnom2,$pnum2,$pnom3,$pnum3,$cnom1,$cnum1,$cnom2,$cnum2,$cnom3,$cnum3){
 
         try {
@@ -72,7 +51,28 @@ class Trade {
           }
 
 
-      }
+      },
+
+      // Autocomplétion, récupération bdd
+
+        // public function cherche($term) {
+        //
+        //       $this->term = $term;
+        //       // echo "php".$_POST['term'];
+        //       $requete = $this->bdd->prepare("SELECT * FROM Plantes WHERE nom LIKE :term"); // j'effectue ma requête SQL grâce au mot-clé LIKE
+        //       $requete->execute(array('term' => '%'.$this->term.'%'));
+        //
+        //       $reponse = array(); // on créé le tableau
+        //
+        //       while($donnee = $requete->fetch()) // on effectue une boucle pour obtenir les données
+        //       {
+        //           array_push($reponse, $donnee['nom']); // et on ajoute celles-ci à notre tableau
+        //       }
+        //
+        //
+        //       echo json_encode($reponse); // il n'y a plus qu'à convertir en JSON
+        //
+        //   }
 
 
     }
