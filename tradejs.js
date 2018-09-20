@@ -78,17 +78,18 @@ DOUBLE = {
             if (xhrw.readyState === 4 && xhrw.status === 200) {
               // ici on peut traiter la réponse qui est  contenue dans :  xhrw.responseText
               rep = xhrw.responseText;
-              console.log(rep);
+              // console.log(rep);
 
             } else if (xhrw.readyState < 4) {
                 //wait and see;
             }//endif
         };//end function associated to onreadystatechange
         var envoi = JSON.stringify(variables);
-    
+
         xhrw.open("POST", "indextrade.php", true);
         xhrw.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhrw.send(envoi);
+
     }//end requete
 
 

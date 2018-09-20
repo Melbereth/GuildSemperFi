@@ -3,12 +3,15 @@
 class Trade {
 
   private $bdd;
-  public $add ="chantal goya";
-  public $toto = "pandi panda";
+  private $table = 'Proposition';
+  public $add;
+  public $i = 0;
+
   // public $term;
 
 
     // Connection à la bdd
+
 
       public function Trade(){
 
@@ -26,35 +29,26 @@ class Trade {
     }
 
 
-    public function titi() {
-      $this->toto="ok";
-    }
-
         // Envoi des valeurs des input à la BDD
-      public function envoi($pnom1,$pnum1,$pnom2,$pnum2,$pnom3,$pnum3,$cnom1,$cnum1,$cnom2,$cnum2,$cnom3,$cnum3){
-        $this->toto = "tumeféiech";
+      public function envoi($_POST){
 
         try {
 
             $this->add = $this->bdd->prepare(
-              "INSERT INTO Proposition (pournom1,pournum1,pournom2,pournum2,pournom3,pournum3,contrenom1,contrenum1,contrenom2,contrenum2,contrenom3,contrenum3) VALUES (:pnom1,:pnum1,:pnom2,:pnum2,:pnom3,:pnum3,:cnom1,:cnum1,:cnom2,:cnum2,:cnom3,:cnum3)");
-            $this->add->bindParam(':pnom1', $pnom1);
-            $this->add->bindParam(':pnum1', $pnum1);
-            $this->add->bindParam(':pnom2', $pnom2);
-            $this->add->bindParam(':pnum2', $pnum2);
-            $this->add->bindParam(':pnom3', $pnom3);
-            $this->add->bindParam(':pnum3', $pnum3);
-            $this->add->bindParam(':cnom1', $cnom1);
-            $this->add->bindParam(':cnum1', $cnum1);
-            $this->add->bindParam(':cnom2', $cnom2);
-            $this->add->bindParam(':cnum2', $cnum2);
-            $this->add->bindParam(':cnom3', $cnom3);
-            $this->add->bindParam(':cnum3', $cnum3);
+              "INSERT INTO $this->table (pournom1,pournum1,pournom2,pournum2,pournom3,pournum3,contrenom1,contrenum1,contrenom2,contrenum2,contrenom3,contrenum3) VALUES ($valeur)";
+
+              foreach ($_POST as $name => $value) {
+                $this->add->bindParam(":name$i", $name . $i);
+                $this->add->bindParam(":value$i", $value . $i);
+                $valeur += ":name$i, :value$i";
+                $i++;
+              }
+
             $this->add->execute();
 
           } catch(PDOexception $e){
 
-            $this->add = "Newton vous m'entendez?";
+            echo "Newton vous m'entendez?";
 
           }
 
