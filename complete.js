@@ -13,7 +13,7 @@ AUTO = {
 		var cible = e.target;
 		var demande = e.target.value;
 		var envoi = document.querySelector(".result");
-		cible.nextElementSibling.nextElementSi
+		// cible.nextElementSibling.nextElementSi
   case isset ($_POST['envoyer']):bling.innerHTML = "";
     var xhttp = new XMLHttpRequest();
     xhttp.onload = function() {

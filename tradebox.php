@@ -17,7 +17,7 @@
         <button type="button" id="BTNplus" class="BTNplus" name="button">Ajouter un trade</button>
       </div>
       <div id="cache" class="hidden">
-        <form class="" method="post">
+        <form>
 
 
             <div class="proposition">
@@ -44,7 +44,7 @@
             <button type="button" id="newB2" name="bouton">New input</button><br>
 
 
-            <input type="submit" id="BTNtrade" name="envoyer" value="Proposer le trade">
+            <input type="button" id="BTNtrade" name="envoyer" value="Proposer le trade">
         </form>
           </div>
 

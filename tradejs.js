@@ -61,13 +61,35 @@ DOUBLE = {
        infos: function() {
 
          var recup = document.querySelectorAll(".recuperer");
+         var tbl = {};
          for (i=0; i<recup.length; i++) {
 
-            if(recup[i].value.length != "") {
-              console.log(recup[i].value);
+            if(recup[i].value != "") {
+              tbl[recup[i].attributes.name.value] = recup[i].value;
             }
           }
-       }
+          DOUBLE.requete(tbl);
+
+       },
+
+       requete : function(variables) {
+        var xhrw = new XMLHttpRequest();
+        xhrw.onreadystatechange = function() {
+            if (xhrw.readyState === 4 && xhrw.status === 200) {
+              // ici on peut traiter la réponse qui est  contenue dans :  xhrw.responseText
+              rep = xhrw.responseText;
+              console.log(rep);
+
+            } else if (xhrw.readyState < 4) {
+                //wait and see;
+            }//endif
+        };//end function associated to onreadystatechange
+        var envoi = JSON.stringify(variables);
+    
+        xhrw.open("POST", "indextrade.php", true);
+        xhrw.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhrw.send(envoi);
+    }//end requete
 
 
 
