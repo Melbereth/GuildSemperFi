@@ -5,7 +5,7 @@ $auto = New Trade();
 // $auto->cherche($_POST['term']);
 
 
-    $reponse = $auto->envoi($_POST['proposition'], ($_POST['besoin']), $_POST['id troc'],$_POST['quantite'], $_POST['id user'])
+    $reponse = $auto->envoi($_POST['id_user'], ($_POST['id_troc']), $_POST['contenu'],$_POST['quantite'], $_POST['location']);
 
 
 

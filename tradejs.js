@@ -78,7 +78,6 @@ DOUBLE = {
             if (xhrw.readyState === 4 && xhrw.status === 200) {
               // ici on peut traiter la réponse qui est  contenue dans :  xhrw.responseText
               rep = xhrw.responseText;
-              // console.log(rep);
 
             } else if (xhrw.readyState < 4) {
                 //wait and see;

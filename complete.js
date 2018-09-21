@@ -18,7 +18,7 @@ AUTO = {
     var xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
 
-
+3
 
       var rep = JSON.parse(xhttp.responseText);
 
