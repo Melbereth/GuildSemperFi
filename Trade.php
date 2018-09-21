@@ -4,7 +4,6 @@ class Trade {
 
   private $bdd;
   private $table = 'Proposition';
-  public $add;
   public $i = 0;
 
   // public $term;
@@ -30,21 +29,25 @@ class Trade {
 
 
         // Envoi des valeurs des input à la BDD
-      public function envoi($_POST){
+      public function envoi($tata){
 
         try {
 
-            $this->add = $this->bdd->prepare(
-              "INSERT INTO $this->table (pournom1,pournum1,pournom2,pournum2,pournom3,pournum3,contrenom1,contrenum1,contrenom2,contrenum2,contrenom3,contrenum3) VALUES ($valeur)";
+            $add = $this->bdd->prepare(
+              "INSERT INTO $this->table (id_user,id_troc,troc,quantite,location) VALUES (:IDU,:IDT,:TROC,:QTE,:LOC)");
 
-              foreach ($_POST as $name => $value) {
-                $this->add->bindParam(":name$i", $name . $i);
-                $this->add->bindParam(":value$i", $value . $i);
-                $valeur += ":name$i, :value$i";
-                $i++;
+              $add->bindParam(':IDU', $idu);
+              $add->bindParam(':IDT', $idt);
+              $add->bindParam(':TROC', $troc);
+              $add->bindParam(':QTE', $qte);
+              $add->bindParam(':LOC', $loc);
+
+              for () {
+                $idt
+                $troc
               }
 
-            $this->add->execute();
+            $add->execute();
 
           } catch(PDOexception $e){
 
