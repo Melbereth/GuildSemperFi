@@ -75,30 +75,25 @@ DOUBLE = {
           TBLnomP.push(propoNom[i].value);
           TBLnumP.push(propoNum[i].value);
         }
-         console.log(TBLnomP);
-         console.log(TBLnumP);
         for(i=0;i<besoinNom.length;i++){
           TBLnomB.push(besoinNom[i].value);
           TBLnumB.push(besoinNum[i].value);
         }
-        console.log(TBLnomB);
-        console.log(TBLnumB);
 
-
-
-
-
-         // var variables = "TBLpropo=".concat(JSON.stringify(tbl));
-         // variables = variables.concat("&TBLbesoin=");
-         // variables = variables.concat(JSON.stringify(tbl2));
-          // DOUBLE.requete(tbl, tbl2);
-          // console.log(variables);
+         var variables = "TBLnomP=".concat(JSON.stringify(TBLnomP));
+         variables = variables.concat("&TBLnumP=");
+         variables = variables.concat(JSON.stringify(TBLnumP));
+         variables = variables.concat("&TBLnomB=");
+         variables = variables.concat(JSON.stringify(TBLnomB));
+         variables = variables.concat("&TBLnumB=");
+         variables = variables.concat(JSON.stringify(TBLnumB));
+          DOUBLE.requete(variables);
+          console.log(variables);
 
        },
-
-
+       
        // Ajax
-       requete : function(variables, variable) {
+       requete : function(variables) {
         var xhrw = new XMLHttpRequest();
         xhrw.onreadystatechange = function() {
             if (xhrw.readyState === 4 && xhrw.status === 200) {
@@ -109,13 +104,11 @@ DOUBLE = {
                 //wait and see;
             }//endif
         };//end function associated to onreadystatechange
-        var envoi1 = JSON.stringify(variables);
-        var envoi2 = JSON.stringify(variable);
-        var envoi = envoi1.concat(" ").concat(envoi2);
+
+
         xhrw.open("POST", "indextrade.php", true);
         xhrw.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhrw.send(envoi);
-        console.log(envoi);
+        xhrw.send(variables);
 
     }//end requete
 
