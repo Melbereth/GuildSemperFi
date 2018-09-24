@@ -28,8 +28,8 @@ class Trade {
     }
 
 
-        // Envoi des valeurs des input à la BDD
-      public function envoi($tata){
+        // Envoi des valeurs de proposition à la bdd
+      public function envoip($tata){
 
         try {
 
@@ -42,10 +42,10 @@ class Trade {
               $add->bindParam(':QTE', $qte);
               $add->bindParam(':LOC', $loc);
 
-              for () {
-                $idt
-                $troc
-              }
+              // for () {
+              //   $idt
+              //   $troc
+              // }
 
             $add->execute();
 
@@ -56,6 +56,36 @@ class Trade {
           }
 
       }
+
+          // Envoi des valeurs de besoin à la bdd
+      public function envoib($tata){
+
+        try {
+
+            $add = $this->bdd->prepare(
+              "INSERT INTO $this->table (id_user,id_troc,troc,quantite,location) VALUES (:IDU,:IDT,:TROC,:QTE,:LOC)");
+
+              $add->bindParam(':IDU', $idu);
+              $add->bindParam(':IDT', $idt);
+              $add->bindParam(':TROC', $troc);
+              $add->bindParam(':QTE', $qte);
+              $add->bindParam(':LOC', $loc);
+
+              // for () {
+              //   $idt
+              //   $troc
+              // }
+
+            $add->execute();
+
+          } catch(PDOexception $e){
+
+            echo "Newton vous m'entendez?";
+
+          }
+
+      }
+
 
       // Autocomplétion, récupération bdd
 

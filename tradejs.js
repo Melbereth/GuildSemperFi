@@ -29,11 +29,11 @@ DOUBLE = {
         // Génére jusqu'à deux div Proposition en + pour plus d'entrée
       newPut: function() {
           if(DOUBLE.count <= 3) {
-            var test = document.querySelector('#exemB');
+            var test = document.querySelector('#exem');
             test = test.cloneNode(true);
             test.children[0].name = "nom" + DOUBLE.count;
             test.children[1].name = "num" + DOUBLE.count;
-            document.querySelector('.proposition').appendChild(test);
+            document.getElementById('proposition').appendChild(test);
             DOUBLE.count++;
             document.getElementById('newB').disabled = false;
           } else {
@@ -44,11 +44,11 @@ DOUBLE = {
           // Génére jusqu'à deux div Besoin en + pour plus d'entrée
       newBes: function() {
           if(DOUBLE.count2 <= 3) {
-            var test = document.querySelector('#exem');
+            var test = document.querySelector('#exemB');
             test = test.cloneNode(true);
             test.children[0].name = "need" + DOUBLE.count2;
             test.children[1].name = "numb" + DOUBLE.count2;
-            document.querySelector('.besoin').appendChild(test);
+            document.getElementById('besoin').appendChild(test);
             DOUBLE.count2++;
             document.getElementById('newB2').disabled = false;
           } else {
@@ -57,22 +57,36 @@ DOUBLE = {
 
        },
 
-          // Récupération des valeurs saisies dans l'input
+          // Récupération des valeurs localisation + input
        infos: function() {
 
-         var recup = document.querySelectorAll(".recuperer");
+         var recup = document.querySelectorAll("input[data-champ]");
+         var div = document.querySelectorAll("div[data-loc]");
          var tbl = {};
-         for (i=0; i<recup.length; i++) {
+         var tbl2 = {};
+         div.forEach(function(el) {
+           var local = el.getAttribute("data-loc");
+           for (i=0; i<recup.length; i++) {
 
-            if(recup[i].value != "") {
-              tbl[recup[i].attributes.name.value] = recup[i].value;
+              if(recup[i].getAttribute("data-champ") == "proposition") {
+                tbl[recup[i].attributes.name.value] = recup[i].value;
+              } else if (recup[i].getAttribute("data-champ") == "besoin") {
+                tbl2[recup[i].attributes.name.value] = recup[i].value;
+              }
             }
-          }
-          DOUBLE.requete(tbl);
+
+         });
+         var variables = "TBLpropo=".concat(JSON.stringify(tbl));
+         variables = variables.concat("&TBLbesoin=");
+         variables = variables.concat(JSON.stringify(tbl2));
+          // DOUBLE.requete(tbl, tbl2);
+          console.log(variables);
 
        },
 
-       requete : function(variables) {
+
+       // Ajax
+       requete : function(variables, variable) {
         var xhrw = new XMLHttpRequest();
         xhrw.onreadystatechange = function() {
             if (xhrw.readyState === 4 && xhrw.status === 200) {
@@ -83,11 +97,13 @@ DOUBLE = {
                 //wait and see;
             }//endif
         };//end function associated to onreadystatechange
-        var envoi = JSON.stringify(variables);
-
+        var envoi1 = JSON.stringify(variables);
+        var envoi2 = JSON.stringify(variable);
+        var envoi = envoi1.concat(" ").concat(envoi2);
         xhrw.open("POST", "indextrade.php", true);
         xhrw.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhrw.send(envoi);
+        console.log(envoi);
 
     }//end requete
 
