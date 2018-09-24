@@ -60,27 +60,39 @@ DOUBLE = {
           // Récupération des valeurs localisation + input
        infos: function() {
 
-         var recup = document.querySelectorAll("input[data-champ]");
-         var div = document.querySelectorAll("div[data-loc]");
-         var tbl = {};
-         var tbl2 = {};
-         div.forEach(function(el) {
-           var local = el.getAttribute("data-loc");
-           for (i=0; i<recup.length; i++) {
+         var recupPropo   = document.querySelector("div[data-loc=proposition]");
+         var recupBesoin  = document.querySelector("div[data-loc=besoin]");
+         var propoNom     = recupPropo.querySelectorAll("input[data-champ=nom]");
+         var propoNum     = recupPropo.querySelectorAll("input[data-champ=num]");
+         var besoinNom    = recupBesoin.querySelectorAll("input[data-champ=nom]");
+         var besoinNum    = recupBesoin.querySelectorAll("input[data-champ=num]");
+         var TBLnomP      = [];
+         var TBLnumP      = [];
+         var TBLnomB      = [];
+         var TBLnumB      = [];
 
-              if(recup[i].getAttribute("data-champ") == "proposition") {
-                tbl[recup[i].attributes.name.value] = recup[i].value;
-              } else if (recup[i].getAttribute("data-champ") == "besoin") {
-                tbl2[recup[i].attributes.name.value] = recup[i].value;
-              }
-            }
+        for(i=0;i<propoNom.length;i++){
+          TBLnomP.push(propoNom[i].value);
+          TBLnumP.push(propoNum[i].value);
+        }
+         console.log(TBLnomP);
+         console.log(TBLnumP);
+        for(i=0;i<besoinNom.length;i++){
+          TBLnomB.push(besoinNom[i].value);
+          TBLnumB.push(besoinNum[i].value);
+        }
+        console.log(TBLnomB);
+        console.log(TBLnumB);
 
-         });
-         var variables = "TBLpropo=".concat(JSON.stringify(tbl));
-         variables = variables.concat("&TBLbesoin=");
-         variables = variables.concat(JSON.stringify(tbl2));
+
+
+
+
+         // var variables = "TBLpropo=".concat(JSON.stringify(tbl));
+         // variables = variables.concat("&TBLbesoin=");
+         // variables = variables.concat(JSON.stringify(tbl2));
           // DOUBLE.requete(tbl, tbl2);
-          console.log(variables);
+          // console.log(variables);
 
        },
 

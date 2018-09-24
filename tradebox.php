@@ -23,8 +23,8 @@
             <div data-loc="proposition" id="proposition">
 
                   <div class="objet" id="exem">
-                    <input type="text" class="recuperer" data-champ="proposition" name="nom1" placeholder="Nom de plante">
-                    <input type="number" class="recuperer" data-champ="proposition" name="num1" placeholder="Nombre">
+                    <input type="text" data-champ="nom" name="nom1" placeholder="Nom de plante">
+                    <input type="number" data-champ="num" name="num1" placeholder="Nombre">
                     <div class="result"></div>
                   </div>
 
@@ -34,8 +34,8 @@
             <div data-loc="besoin" id="besoin">
 
               <div class="objet" id="exemB">
-                <input type="text" class="recuperer" data-champ="besoin" name="need1" placeholder="Plante">
-                <input type="number" class="recuperer" data-champ="besoin" name="numb1" placeholder="Nombre">
+                <input type="text"  data-champ="nom" name="need1" placeholder="Plante">
+                <input type="number" data-champ="num" name="numb1" placeholder="Nombre">
                 <div class="result"></div>
               </div>
 
