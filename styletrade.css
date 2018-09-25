@@ -38,11 +38,11 @@ body {
 
 }
 
-.proposition {
+#proposition {
   display: flex;
 }
 
-.besoin {
+#besoin {
   display: flex;
 }
 

@@ -3,8 +3,10 @@
 class Trade {
 
   private $bdd;
-  private $table = 'Proposition';
+  // private $table = 'Proposition';
   public $i = 0;
+  public $loc1 = 0;
+  public $loc2 = 1;
 
   // public $term;
 
@@ -27,27 +29,40 @@ class Trade {
 
     }
 
+    public function test(){
+      $test = $this->bdd->prepare(
+        "SELECT `id_troc` FROM `Proposition` ORDER BY `id_troc` DESC LIMIT 1"
+      );
+      $test->execute();
+      $tout = $test->fetch();
+    }
+
 
         // Envoi des valeurs de proposition à la bdd
-      public function envoip($tata){
+      public function envoip($propoN, $propoQ){
 
         try {
 
+            // $this->test();
             $add = $this->bdd->prepare(
-              "INSERT INTO $this->table (id_user,id_troc,troc,quantite,location) VALUES (:IDU,:IDT,:TROC,:QTE,:LOC)");
+              "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
 
-              $add->bindParam(':IDU', $idu);
-              $add->bindParam(':IDT', $idt);
-              $add->bindParam(':TROC', $troc);
-              $add->bindParam(':QTE', $qte);
-              $add->bindParam(':LOC', $loc);
 
-              // for () {
-              //   $idt
-              //   $troc
-              // }
+              foreach ($propoN as $key => $value) {
+                  $value = $value + 1;
+              };
+              foreach ($propoQ as $key => $value) {
+
+              };
+              // $add->bindParam(':IDU', $idu);
+              // $add->bindParam(':IDT', $idt);
+              $add->bindParam(':TROC', $propoN);
+              $add->bindParam(':QTE', $propoQ);
+              $add->bindParam(':LOC', $this->loc1);
+
 
             $add->execute();
+
 
           } catch(PDOexception $e){
 
@@ -58,25 +73,25 @@ class Trade {
       }
 
           // Envoi des valeurs de besoin à la bdd
-      public function envoib($tata){
+      public function envoib($besoinN, $besoinQ){
 
         try {
 
-            $add = $this->bdd->prepare(
-              "INSERT INTO $this->table (id_user,id_troc,troc,quantite,location) VALUES (:IDU,:IDT,:TROC,:QTE,:LOC)");
+            $add1 = $this->bdd->prepare(
+              "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
 
-              $add->bindParam(':IDU', $idu);
-              $add->bindParam(':IDT', $idt);
-              $add->bindParam(':TROC', $troc);
-              $add->bindParam(':QTE', $qte);
-              $add->bindParam(':LOC', $loc);
+              //$add->bindParam(':IDU', $idu);
+              // $add->bindParam(':IDT', $idt);
+              $add1->bindParam(':TROC', $besoinN);
+              $add1->bindParam(':QTE', $besoinQ);
+              $add1->bindParam(':LOC', $this->loc2);
 
-              // for () {
-              //   $idt
-              //   $troc
+              // if($idt <$test) {
+              //   $test++;
               // }
 
-            $add->execute();
+            $add1->execute();
+
 
           } catch(PDOexception $e){
 
