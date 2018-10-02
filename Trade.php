@@ -3,7 +3,6 @@
 class Trade {
 
   private $bdd;
-  // private $table = 'Proposition';
   public $i = 0;
   public $loc1 = 0;
   public $loc2 = 1;
@@ -12,7 +11,6 @@ class Trade {
 
 
     // Connection à la bdd
-
 
       public function Trade(){
 
@@ -43,17 +41,15 @@ class Trade {
 
         try {
 
-            // $this->test();
+
             $add = $this->bdd->prepare(
               "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
 
-
-              // $add->bindParam(':IDU', $idu);
-              // $add->bindParam(':IDT', $idt);
               $add->bindParam(':TROC', $propoN);
               $add->bindParam(':QTE', $propoQ);
               $add->bindParam(':LOC', $this->loc1);
 
+              // boucle à faire pour envoyer Proposition
               foreach ($propoN as $key => $value) {
 
               };
@@ -81,15 +77,12 @@ class Trade {
             $add1 = $this->bdd->prepare(
               "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
 
-              //$add->bindParam(':IDU', $idu);
-              // $add->bindParam(':IDT', $idt);
+
               $add1->bindParam(':TROC', $besoinN);
               $add1->bindParam(':QTE', $besoinQ);
               $add1->bindParam(':LOC', $this->loc2);
 
-              // if($idt <$test) {
-              //   $test++;
-              // }
+            // boucle à faire pour envoyer Besoin
 
             $add1->execute();
 
