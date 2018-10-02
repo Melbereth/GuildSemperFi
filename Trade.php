@@ -48,17 +48,18 @@ class Trade {
               "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
 
 
-              foreach ($propoN as $key => $value) {
-                  $value = $value + 1;
-              };
-              foreach ($propoQ as $key => $value) {
-
-              };
               // $add->bindParam(':IDU', $idu);
               // $add->bindParam(':IDT', $idt);
               $add->bindParam(':TROC', $propoN);
               $add->bindParam(':QTE', $propoQ);
               $add->bindParam(':LOC', $this->loc1);
+
+              foreach ($propoN as $key => $value) {
+
+              };
+              foreach ($propoQ as $key => $value) {
+
+              };
 
 
             $add->execute();
