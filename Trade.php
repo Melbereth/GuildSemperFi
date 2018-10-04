@@ -6,7 +6,7 @@ class Trade {
   public $i = 0;
   public $loc1 = 0;
   public $loc2 = 1;
-
+  public $lii;
   // public $term;
 
 
@@ -27,13 +27,24 @@ class Trade {
 
     }
 
-    public function test(){
-      $test = $this->bdd->prepare(
-        "SELECT `id_troc` FROM `Proposition` ORDER BY `id_troc` DESC LIMIT 1"
-      );
-      $test->execute();
-      $tout = $test->fetch();
+
+      // récupération du last id de la table idnext
+    public function idtroc($idu){
+      $troc = $this->bdd->prepare("INSERT INTO idnext (id_user) VALUES($idu)");
+      $troc->execute();
+      return $this->bdd->lastInsertId();
+      // if($next===null){
+      //   $ntroc= 1;
+      // }
     }
+
+      // $etroc = $this->bdd->prepare(
+      //   "SELECT $next FROM idnext UPDATE Proposition SET id_troc = :ntroc"
+      // );
+      // $etroc->bindParam(':ntroc', $ntroc);
+      // for($i=0;$i<=$next;$i++) {
+      //     $ntroc =
+      // }
 
 
         // Envoi des valeurs de proposition à la bdd
@@ -43,8 +54,11 @@ class Trade {
 
 
             $add = $this->bdd->prepare(
-              "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
+              "INSERT INTO Proposition (id_troc,troc,quantite,location) VALUES (:IDTROC,:TROC,:QTE,:LOC)");
+              $idu =2; // uniquement pour test
+              $this->lii = $this->idtroc($idu);
 
+              $add->bindParam(':IDTROC', $this->lii);
               $add->bindParam(':TROC', $trocP);
               $add->bindParam(':QTE', $qteP);
               $add->bindParam(':LOC', $this->loc1);
@@ -72,9 +86,12 @@ class Trade {
         try {
 
             $add1 = $this->bdd->prepare(
-              "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
+              "INSERT INTO Proposition (id_troc,troc,quantite,location) VALUES (:IDTROC,:TROC,:QTE,:LOC)");
 
+              // $idu =2; // uniquement pour test
+              // $lii = $this->idtroc($idu);
 
+              $add1->bindParam(':IDTROC', $this->lii);
               $add1->bindParam(':TROC', $trocB);
               $add1->bindParam(':QTE', $qteB);
               $add1->bindParam(':LOC', $this->loc2);
