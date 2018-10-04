@@ -45,20 +45,17 @@ class Trade {
             $add = $this->bdd->prepare(
               "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
 
-              $add->bindParam(':TROC', $propoN);
-              $add->bindParam(':QTE', $propoQ);
+              $add->bindParam(':TROC', $trocP);
+              $add->bindParam(':QTE', $qteP);
               $add->bindParam(':LOC', $this->loc1);
 
               // boucle à faire pour envoyer Proposition
-              foreach ($propoN as $key => $value) {
-
+              $arr_length = count($propoN);
+              for ($i=0;$i<$arr_length;$i++) {
+                  $trocP = $propoN[$i];
+                  $qteP = $propoQ[$i];
+                  $add->execute();
               };
-              foreach ($propoQ as $key => $value) {
-
-              };
-
-
-            $add->execute();
 
 
           } catch(PDOexception $e){
@@ -78,13 +75,19 @@ class Trade {
               "INSERT INTO Proposition (troc,quantite,location) VALUES (:TROC,:QTE,:LOC)");
 
 
-              $add1->bindParam(':TROC', $besoinN);
-              $add1->bindParam(':QTE', $besoinQ);
+              $add1->bindParam(':TROC', $trocB);
+              $add1->bindParam(':QTE', $qteB);
               $add1->bindParam(':LOC', $this->loc2);
 
             // boucle à faire pour envoyer Besoin
+            $length = count($besoinN);
+            for ($i=0;$i<$length;$i++) {
+                $trocB = $besoinN[$i];
+                $qteB = $besoinQ[$i];
+                $add1->execute();
+            };
 
-            $add1->execute();
+
 
 
           } catch(PDOexception $e){
