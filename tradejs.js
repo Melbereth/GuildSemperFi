@@ -91,7 +91,7 @@ DOUBLE = {
           console.log(variables);
 
        },
-       
+
        // Ajax
        requete : function(variables) {
         var xhrw = new XMLHttpRequest();
@@ -114,6 +114,6 @@ DOUBLE = {
 
 
 
-}
+};
 
 window.onload = DOUBLE.INIT();

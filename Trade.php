@@ -7,7 +7,7 @@ class Trade {
   public $loc1 = 0;
   public $loc2 = 1;
   public $lii;
-  // public $term;
+  public $term;
 
 
     // Connection à la bdd
@@ -33,18 +33,7 @@ class Trade {
       $troc = $this->bdd->prepare("INSERT INTO idnext (id_user) VALUES($idu)");
       $troc->execute();
       return $this->bdd->lastInsertId();
-      // if($next===null){
-      //   $ntroc= 1;
-      // }
     }
-
-      // $etroc = $this->bdd->prepare(
-      //   "SELECT $next FROM idnext UPDATE Proposition SET id_troc = :ntroc"
-      // );
-      // $etroc->bindParam(':ntroc', $ntroc);
-      // for($i=0;$i<=$next;$i++) {
-      //     $ntroc =
-      // }
 
 
         // Envoi des valeurs de proposition à la bdd
@@ -118,24 +107,24 @@ class Trade {
 
       // Autocomplétion, récupération bdd
 
-        // public function cherche($term) {
-        //
-        //       $this->term = $term;
-        //       // echo "php".$_POST['term'];
-        //       $requete = $this->bdd->prepare("SELECT * FROM Plantes WHERE nom LIKE :term"); // j'effectue ma requête SQL grâce au mot-clé LIKE
-        //       $requete->execute(array('term' => '%'.$this->term.'%'));
-        //
-        //       $reponse = array(); // on créé le tableau
-        //
-        //       while($donnee = $requete->fetch()) // on effectue une boucle pour obtenir les données
-        //       {
-        //           array_push($reponse, $donnee['nom']); // et on ajoute celles-ci à notre tableau
-        //       }
-        //
-        //
-        //       echo json_encode($reponse); // il n'y a plus qu'à convertir en JSON
-        //
-        //   }
+        public function cherche($term) {
+
+              $this->term = $term;
+              // echo "php".$_POST['term'];
+              $requete = $this->bdd->prepare("SELECT * FROM Plantes WHERE nom LIKE :term"); // j'effectue ma requête SQL grâce au mot-clé LIKE
+              $requete->execute(array('term' => '%'.$this->term.'%'));
+
+              $reponse = array(); // on créé le tableau
+
+              while($donnee = $requete->fetch()) // on effectue une boucle pour obtenir les données
+              {
+                  array_push($reponse, $donnee['nom']); // et on ajoute celles-ci à notre tableau
+              }
+
+
+              echo json_encode($reponse); // il n'y a plus qu'à convertir en JSON
+
+          }
 
     }
 

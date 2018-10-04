@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>TradeWoW</title>
     <link rel="stylesheet" href="styletrade.css">
 
   </head>
@@ -23,8 +23,8 @@
             <div data-loc="proposition" id="proposition">
 
                   <div class="objet" id="exem">
-                    <input type="text" data-champ="nom" name="nom1" placeholder="Nom de plante">
-                    <input type="number" data-champ="num" name="num1" placeholder="Nombre">
+                    <input type="text" class="search" data-champ="nom" name="nom1" placeholder="Nom de plante" autocomplete="off">
+                    <input type="number" data-champ="num" name="num1" placeholder="Nombre" autocomplete="off">
                     <div class="result"></div>
                   </div>
 
@@ -34,8 +34,8 @@
             <div data-loc="besoin" id="besoin">
 
               <div class="objet" id="exemB">
-                <input type="text"  data-champ="nom" name="need1" placeholder="Plante">
-                <input type="number" data-champ="num" name="numb1" placeholder="Nombre">
+                <input type="text" class="search" data-champ="nom" name="need1" placeholder="Plante" autocomplete="off">
+                <input type="number" data-champ="num" name="numb1" placeholder="Nombre" autocomplete="off">
                 <div class="result"></div>
               </div>
 
@@ -49,7 +49,7 @@
           </div>
 
       <script type="text/javascript" src="tradejs.js"></script>
-      <!-- <script  src="complete.js" type="text/javascript"></script> -->
+      <script  src="complete.js" type="text/javascript"></script>
 
   </body>
 </html>
