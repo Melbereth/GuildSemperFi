@@ -1,0 +1,72 @@
+html {
+  width: 100%;
+  height: auto;
+}
+body {
+  width: 100%;
+  height: auto;
+  display: block;
+  justify-content: center;
+  /* background-image: url("https://addons-media.operacdn.com/media/CACHE/images/themes/65/82365/1.0-rev1/images/796c53ca-bc3f-4649-9db5-5a6892c2fab7/4ea1d4df34ae8c421aafa3f73179793d.jpg");
+  background-repeat: no-repeat;
+  background-size: contain; */
+}
+
+#boxtrade {
+  width: 50%;
+  height: 30%;
+  display: inline-block;
+  justify-content: center;
+}
+
+#newcontenu {
+  width: 30%;
+  height: auto;
+  border: 5px solid gold;
+  display: flex;
+  justify-content: center;
+  background-color: #3a3af4;
+}
+
+#boutonplus {
+  width: auto;
+  height: auto;
+}
+
+#cache {
+  display: none;
+
+}
+
+#proposition {
+  display: flex;
+}
+
+#besoin {
+  display: flex;
+}
+
+.objet {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+width: 60%;
+margin: 1%;
+}
+
+hr{
+
+  border: none;
+  border-left: 1px solid hsla(200, 10%, 50%,100);
+  height: auto;
+  width: 1px;
+  margin-right: 50px;
+}
+
+.result {
+  min-height: 40px;
+  max-height: 300px;
+  border: 1px solid black;
+}
