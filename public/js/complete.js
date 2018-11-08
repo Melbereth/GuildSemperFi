@@ -11,17 +11,18 @@ AUTO = {
 
   ajax: function(e) {
 		var cible = e.target;
-		var demande = e.target.value;
+		var demande = e.target.value;		
 		var envoi = document.querySelector(".result");
-		console.log(envoi);
+		console.log(cible.nextElementSibling.nextElementSibling);
     var xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
 
-      var rep = JSON.parse(xhttp.responseText);
-			console.log(rep);
+			var rep = JSON.parse(xhttp.responseText);
 			for (i=0;i<rep.length;i++) {
-				cible.nextElementSibling.nextElementSibling.innerHTML += rep[i] + '<br>';
+				cible.nextElementSibling.innerHTML += '<span>' + rep[i]  + '</span> <br>';
 			}
+		
+			
 
     };
 

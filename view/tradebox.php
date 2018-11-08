@@ -22,10 +22,10 @@
 
             <div data-loc="proposition" id="proposition">
 
-                  <div class="objet" id="exem">
-                    <input type="text" class="search" data-champ="nom" name="nom1" placeholder="Nom de plante" autocomplete="off"/>
-                    <div class="result" id="resultp1"></div>
-                    <input type="number" data-champ="num" name="num1" placeholder="Nombre" autocomplete="off"/>
+                  <div data-family='p1' class="objet" id="exem">
+                    <input data-family='p1' id="nomp1" type="text" class="search" data-champ="nom" name="nom1" placeholder="Nom de plante" autocomplete="off"/>
+                    <div data-family='p1' class="result" id="resultp1"></div>
+                    <input data-family='p1' type="number" data-champ="num" id="nump1" placeholder="Nombre" autocomplete="off"/>
 
 
                   </div>
@@ -35,10 +35,10 @@
 
             <div data-loc="besoin" id="besoin">
 
-              <div class="objet" id="exemB">
-                <input type="text" class="search" data-champ="nom" name="need1" placeholder="Plante" autocomplete="off"/>
-                <div class="result" id="resultb1"></div>
-                <input type="number" data-champ="num" name="numb1" placeholder="Nombre" autocomplete="off"/>
+              <div data-family='b1' class="objet" id="exemB">
+                <input data-family='b1' type="text" class="search" data-champ="nom" name="need1" placeholder="Plante" autocomplete="off"/>
+                <div data-family='b1' class="result" id="resultb1"></div>
+                <input data-family='b1' type="number" data-champ="num" name="numb1" placeholder="Nombre" autocomplete="off"/>
 
               </div>
 

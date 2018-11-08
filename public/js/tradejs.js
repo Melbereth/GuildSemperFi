@@ -19,6 +19,7 @@ DOUBLE = {
       BTNtrade.addEventListener('click', DOUBLE.infos);
       document.querySelector('#newB').addEventListener('click',DOUBLE.newPut);
       document.querySelector('#newB2').addEventListener('click',DOUBLE.newBes);
+      DOUBLE.init_ecouteur(document.getElementById('resultp1'));
     },
 
 
@@ -38,10 +39,19 @@ DOUBLE = {
           if(DOUBLE.count <= 3) {
             var test = document.querySelector('#exem');
             test = test.cloneNode(true);
-            test.children[0].name = "nom" + DOUBLE.count;
+            test.children[0].id = "nomp" + DOUBLE.count;
             test.children[1].id = "resultp" + DOUBLE.count;
-            test.children[2].name = "num" + DOUBLE.count;
+            test.children[2].id = "nump" + DOUBLE.count;
+            test.setAttribute('data-family', 'p' + DOUBLE.count);
+            test.children[0].setAttribute('data-family', 'p' + DOUBLE.count);
+            test.children[1].setAttribute('data-family', 'p' + DOUBLE.count);
+            test.children[2].setAttribute('data-family', 'p' + DOUBLE.count);
+            test.children[0].value = '';
+            test.children[1].innerHTML = '';
+            test.children[2].value = '';
             document.getElementById('proposition').appendChild(test);
+            test.children[0].addEventListener("keyup", AUTO.ajax);
+            DOUBLE.init_ecouteur(test.children[1]);
             DOUBLE.count++;
             document.getElementById('newB').disabled = false;
           } else {
@@ -63,12 +73,10 @@ DOUBLE = {
           } else {
             document.getElementById('newB2').disabled = true;
           }
-
        },
 
           // Récupération des valeurs localisation + input
        infos: function() {
-
          var recupPropo   = document.querySelector("div[data-loc=proposition]");
          var recupBesoin  = document.querySelector("div[data-loc=besoin]");
          var propoNom     = recupPropo.querySelectorAll("input[data-champ=nom]");
@@ -97,7 +105,7 @@ DOUBLE = {
          variables = variables.concat("&TBLnumB=");
          variables = variables.concat(JSON.stringify(TBLnumB));
           DOUBLE.requete(variables);
-          console.log(variables);
+         
 
        },
 
@@ -119,23 +127,27 @@ DOUBLE = {
         xhrw.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhrw.send(variables);
 
-    }//end requete
+    },//end requete
+
+    selauto: function(evt){
+      if(evt.target.localName == "span"){
+        var f = evt.target.parentNode.getAttribute('data-family');
+        var choix = evt.target.innerText;
+        document.getElementById('nom'.concat(f)).value = choix;
+        document.getElementById('result'.concat(f)).innerHTML = '';
+        
+      }
+      
+    },
+
+    init_ecouteur: function(cible){
+       cible.addEventListener('click', DOUBLE.selauto);
+    }
 
 
 
-},
 
-AFFICHAGE = {
+}
 
-  init: function() {
-
-  },
-
-  show: function() {
-
-  }
-
-
-};
 
 window.onload = INIT.init();
